@@ -5,7 +5,9 @@
 To run this project locally, follow these steps:
 
 1. Clone the repository:
-```git clone https://github.com/Mennaahmed9/StudentAffairs.git```
+```
+git clone https://github.com/Mennaahmed9/StudentAffairs.git
+```
 
 2. Navigate to the project directory: 
 ```cd project_directory```
@@ -30,9 +32,17 @@ source env/bin/activate
 ```
   
 4. Install project dependencies:
-```pip install -r requirements.txt```
+```
+cd studentAffairs
+```
+```
+
+pip install -r requirements.txt
+```
 
 5. Run: 
-```python manage.py runserver```
+```
+python manage.py runserver
+```
   
   
