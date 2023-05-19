@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
+   
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+
+<header>
+    <nav>
+        <ul class="left">
+
+            <li><img src="imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
+            <li><a href="../home">Home</a></li>
+            <li><a href="profile" class="myPage">Profile</a></li>
+            <li><a href="student_screen">Student Screen</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="signin">Sign out</a></li>
+            <li><a href="help">Help?</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body id="profileBody"> 
+    <div class="profileInfo">
+        <p>Name: <span id="adminName"></span></p>
+        <p>email: <span id="adminEmail"></span></p>
+        <p>phone number: <span id="adminPhone"></span></p>
+        <p>gender: <span id="adminGender"></span></p>
+    <button id="adminEdit" type="submit" ><a href="edit_admin"> Edit</a></button>
+
+    </div>
+    
+
+    <script type="text/javascript" src="script.js" defer></script>
+</body>
+
+</html>

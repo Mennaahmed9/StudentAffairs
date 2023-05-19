@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}" />
+    <script type="text/javascript" src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <title>Add New Student</title>
+  </head>
+
+  <header>
+    <nav>
+      <ul class="left">
+        <li>
+          <img
+            src="imgs/logo.png"
+            alt=""
+            width="20px"
+            height="20px"
+            title="logo"
+          />
+        </li>
+        <li><a href="../home">Home</a></li>
+        <li><a href="profile">Profile</a></li>
+        <li><a href="student_screen">Student Screen</a></li>
+      </ul>
+      <ul class="right">
+        <li><a href="signin">Sign out</a></li>
+        <li><a href="help">Help?</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <body onload="hideDepartmentOptions();">
+    <form id="student-form" action="student_screen">
+      <h3>Student Registration Form</h3>
+
+      <div class="input-field">
+        <label for="student-name">Name</label>
+        <input
+          type="text"
+          id="student-name"
+          placeholder="Enter student's full name"
+        />
+        <small class="error"></small>
+      </div>
+      <div class="input-field">
+        <label for="student-id">Student ID</label>
+        <input type="text" id="student-id" placeholder="Enter student's ID" />
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter student's email" />
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Enter student's phone number"
+        />
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label>Gender</label>
+        <div class="radio-container">
+          <label class="radio-button">
+            <input type="radio" id="male" name="gender" value="male" />
+            Male
+          </label>
+          <label class="radio-button">
+            <input type="radio" id="female" name="gender" value="female" />
+            Female
+          </label>
+        </div>
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label>Status</label>
+        <div class="radio-container">
+          <label class="radio-button">
+            <input type="radio" name="status" value="active" />
+            Active
+          </label>
+          <label class="radio-button">
+            <input type="radio" name="status" value="inactive" />
+            Inactive
+          </label>
+        </div>
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="level">Level</label>
+        <select name="level" id="level">
+          <option value="" selected disabled>Select Level</option>
+          <option value="1">First Level</option>
+          <option value="2">Second Level</option>
+          <option value="3">Third Level</option>
+          <option value="4">Forth Level</option>
+        </select>
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="department">Department</label>
+        <select name="Department" id="department">
+          <option value="" selected disabled>Select Department</option>
+          <option value="General">General</option>
+          <option value="CS">Computer Science</option>
+          <option value="AI">Artificial Intelligence</option>
+          <option value="IS">Information Science</option>
+          <option value="IT">Information Technology</option>
+        </select>
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="gpa">GPA</label>
+        <input type="text" id="gpa" placeholder="Enter student's GPA" />
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="national-id"> National ID</label>
+        <input
+          type="text"
+          id="national-id"
+          placeholder="Enter student's National ID"
+        />
+        <small class="error"></small>
+      </div>
+
+      <div class="input-field">
+        <label for="national-id"> Nationality</label>
+        <select name="nationality" id="nationality">
+          <option value="" selected disabled>Select Nationality</option>
+          <option value="Algerian">Algerian</option>
+          <option value="Bahraini">Bahraini</option>
+          <option value="Comorian">Comorian</option>
+          <option value="Djiboutian">Djiboutian</option>
+          <option value="Egyptian">Egyptian</option>
+          <option value="Emirati">Emirati</option>
+          <option value="Iraqi">Iraqi</option>
+          <option value="Jordanian">Jordanian</option>
+          <option value="Kuwaiti">Kuwaiti</option>
+          <option value="Lebanese">Lebanese</option>
+          <option value="Libyan">Libyan</option>
+          <option value="Mauritanian">Mauritanian</option>
+          <option value="Moroccan">Moroccan</option>
+          <option value="Omani">Omani</option>
+          <option value="Palestinian">Palestinian</option>
+          <option value="Qatari">Qatari</option>
+          <option value="Saudi Arabian">Saudi Arabian</option>
+          <option value="Somali">Somali</option>
+          <option value="Sudanese">Sudanese</option>
+          <option value="Syrian">Syrian</option>
+          <option value="Tunisian">Tunisian</option>
+          <option value="Yemeni">Yemeni</option>
+        </select>
+        <small class="error"> </small>
+      </div>
+
+      <div class="input-field">
+        <label for="date-of-birth">Date of birth</label>
+        <input type="date" id="date-of-birth" />
+        <small class="error"></small>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+  </body>
+</html>

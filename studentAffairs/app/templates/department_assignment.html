@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
+    <title>Department Assignment page</title>
+</head>
+
+<header>
+    <nav>
+        <ul class="left">
+
+            <li><img src="imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
+            <li><a href="../home">Home</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="student_screen">Student Screen</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="signin">Sign out</a></li>
+            <li><a href="help">Help?</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <h1>Department Assignment</h1>
+
+    <table>
+        <tr>
+            <th> Student Id </th>
+            <th> Student Name</th>
+            <tbody id="depTable">
+
+            </tbody>
+        </tr>
+        
+
+    </table>
+
+
+    <p>select The department</p>
+
+    <form action="search-page.html">
+        <label for="dep">department:</label>
+        <select name="deps" id="deps">
+            <option selected="selected">
+                General
+            </option>
+            <option value="IS"> IS</option>
+            <option value="CS"> CS </option>
+            <option value="IT"> IT</option>
+            <option value="AI"> AI</option>
+            <option value="DS"> DS</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit" id="depSave" onclick="depSubmit()">
+    </form>
+
+    <script type="text/javascript" src="script.js" defer></script>
+
+</body>

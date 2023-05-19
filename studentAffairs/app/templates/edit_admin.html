@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
+    <meta charset="UTF-8">
+    <title>Edit Profile Admin</title>
+</head>
+
+<header>
+    <nav>
+        <ul class="left">
+
+            <li><img src="imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
+            <li><a href="../home">Home</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="student_screen">Student Screen</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="signin">Sign out</a></li>
+            <li><a href="help">Help?</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <form id="editProfile-admin" action="profile">
+        <h3>Edit the profile information</h3>
+
+        <label for="name"> Name</label><br>
+        <input type="text" id="name" disabled>
+
+        <br>
+        <label for="E-mail"> Email</label><br>
+        <input type="email" id="E-mail" >
+        <br>
+
+        <label for="Phone Number"> Phone Number</label><br>
+        <input type="tel" id="PhoneNumber" pattern="01[0-2]{1}[0-9]{4}[0-9]{4}">
+        <br>
+
+        
+        <label for="gender">Gender</label>
+            <span id="editGender"><input type="radio" name="Gender" value="Male"   checked >
+                <label>Male</label>
+                <input type="radio" name="Gender" value="Female" disabled>
+                <label>Female</label>
+            </span>
+            
+    
+            
+       
+        <input id="saveInfo" type="submit" class="submit" value="Save" >
+
+
+    </form>
+    <script type="text/javascript" src="script.js" defer></script>
+</body>
+
+</html>

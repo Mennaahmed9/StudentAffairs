@@ -1,0 +1,410 @@
+header ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    margin: 0 5%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000000;
+    border-radius: 15px;
+    z-index: 100;
+
+}
+
+
+header li {
+
+    font-size: x-large;
+    float: left;
+}
+
+header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+header li img {
+    width: 50px;
+    height: 50px;
+}
+
+@font-face {
+    font-family: harry_potter;
+    src: url("HARRYP__.TTF");
+}
+
+header a:link {
+    color: white;
+}
+
+header a:hover {
+    color: #e1bb01;
+}
+
+body {
+    font-family: harry_potter, serif;
+    background-image: url("imgs/hogwartsBackground22.png");
+    color: white;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 90px;
+}
+
+h1 {
+    font-size: 40px;
+    letter-spacing: 5px;
+    font-variant: small-caps;
+}
+
+h2 {
+    letter-spacing: 5px;
+}
+
+h3 {
+    letter-spacing: 4px;
+    font-size: x-large;
+}
+
+h4 {
+    letter-spacing: 4px;
+}
+
+h5 {
+    letter-spacing: 3px;
+}
+
+h6 {
+    letter-spacing: 2px;
+}
+
+p {
+    letter-spacing: 2px;
+}
+ul{
+    font-size: x-large;
+}
+
+
+form div {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form div ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin-top: 300px;
+    margin-right: 15%;
+    align-items: center;
+    justify-content: center;
+}
+input, select {
+    letter-spacing: 2px;
+    font-size: 14px;
+    /* font-family: harry_potter, serif; */
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 12px;
+    border-bottom: 2px solid black;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+table {
+    border-bottom: 2px double #000000;
+    padding: 15px;
+    text-align: center;
+    width: 80%;
+    margin: 12px 12px 12px 10%;
+    border-collapse: collapse;
+    overflow-x: scroll;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+td, th{
+    padding: 5px;
+}
+th {
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+    height: 24px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(80, 13, 98, 0.55);
+}
+
+tr:hover {
+    background-color: rgba(192, 98, 1, 0.3);
+}
+
+a {
+    color: #fae28b;
+    text-decoration: none;
+}
+
+
+a:hover {
+    color: #e1bb01;
+}
+
+a:active {
+    color: #63c6de;
+}
+
+form button , button, .submit{
+    font-family: harry_potter, serif;
+    letter-spacing: 2px;
+    font-size: 24px;
+    background-color:  rgba(214, 190, 57, 0.432);
+    border-radius: 16px;
+    border: 2px dot-dash #000000;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration:none;
+    display: flow;
+    box-shadow: 1px 1px black;
+    text-shadow: 1px 1px black;
+    transition: 0.5s;
+    width: 150px;
+    cursor: pointer;
+}
+
+button:hover, .submit:hover {
+    background-color: rgba(214, 190, 57, 0.715);
+    letter-spacing: 3px;
+    width: 170px;
+}
+
+.dropbtn {
+    font-family: harry_potter, serif;
+    background-color: #000000;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(80, 13, 98, 0.55);
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(0, 0, 0, 0.66)
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgba(29, 3, 35, 0.65);
+}
+.center{
+    text-align: center;
+}
+input#search, input#mail, input#pass, #name,#E-mail, #birth, #PhoneNumber{
+    font-size: 20px;
+    width: 30%;
+    transition: 0.5s;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+input#search:hover,  input#mail:hover, input#pass:hover, #name:hover,#E-mail:hover, #birth:hover, #PhoneNumber:hover{
+    letter-spacing: 5px;
+    width: 35%;
+}
+input#search:focus{
+    outline: none;
+}
+#assignment , #edit , #delete{
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: revert;    
+}
+.myPage{
+    color: #e1bb01;
+}
+
+#student-form , #editProfile-admin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 45%;
+    margin: auto;
+    margin-bottom: 30px ;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.input-field, #editGender {
+    display: flex;
+    flex-direction: row;
+    justify-content: justify;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1px;
+    padding-bottom: 10px;
+}
+
+
+.input-field  > input {
+    width: 440px;
+    flex-basis: 60%;
+}
+
+.input-field  select{
+    width: 900px;
+    flex-basis: 70%;
+}
+
+.radio-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 15%;
+}
+
+
+.radio-button{
+    margin-left:0px;
+    padding: 10px;
+}
+
+.input-field  label {
+    width: 10%;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    flex-basis: 10%;
+}
+
+
+.input-field .error{
+    font-family: 'Poppins', sans-serif;
+    color: red;
+    flex-basis: 55%;
+    font-size: 10px;
+}
+
+.radio-container + .error{
+    padding-left: 10px;
+    margin-top: 5%;
+    align-self: self-start;
+}
+
+
+.input-field .material-icons{
+    font-size: 10px;
+    color: red;
+    margin-right: 0px;
+    flex-basis: 0%;
+    width: auto;
+}
+
+
+.profileInfo p{
+    text-transform: uppercase;
+    padding: 20px;
+
+}
+.profileInfo{
+    color: lightgrey;
+    text-align: center;
+    padding-bottom: 20px;
+    margin: 0;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+.profileInfo span{
+    font-size: xx-large;
+    color: palegoldenrod;
+}
+
+#adminEdit a{
+    color: lightgrey;
+}
+.buttons-list {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    font-size: x-large;
+    letter-spacing: 2px;
+
+}
+.buttons-list li{
+    background-color: rgba(29, 3, 35, 0.65);
+    border: 2px dot-dot-dash black;
+    border-radius: 15px;
+    display: block;
+    text-align: center;
+    padding: 20px 32px;
+}
+
+#editGender{
+    display: inline;
+    text-align: center;
+    padding: 15px;
+}
+
+#editProfile-admin > input{
+    width: 300px;
+}
+#editProfile-admin > input:hover{
+    width: 300px;
+}
+
+select , select option {
+    background-color: rgba(29, 3, 35);
+    border: 2px dot-dot-dash black;
+    padding: 12px;
+    font-family: harry_potter, serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+
+}

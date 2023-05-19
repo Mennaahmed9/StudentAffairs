@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
+    <script type="text/javascript" src="script.js" defer></script>
+    <title>Home Page</title>
+    <!-- <style>
+        #home-announcement-add , #home-announcement-edit {
+            background-color: rgba(29, 3, 35, 0.65);;
+        }
+        #home-announcement-add:hover , #home-announcement-edit:hover {
+            background-color: rgba(214, 190, 57, 0.432);
+        }
+        #display-announcements {
+            margin-top: 10%;
+            text-align: center;
+
+        }
+        #display-announcements button {
+            padding: 12px;
+            width: 5%;
+        }
+        #display-announcements button:hover {
+            letter-spacing: 3px;
+            width: 6%;
+        }
+        input {
+            font-family: harry_potter, serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+    </style> -->
+</head>
+
+<header>
+    <nav>
+        <ul class="left">
+
+            <li><img src="imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
+            <li><a href="" class="myPage">Home</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="student_screen">Student Screen</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="signin">Sign out</a></li>
+            <li><a href="help">Help?</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <form>
+        <div>
+            <h2>
+                Announcements<br>
+            </h2>
+            <ul >
+
+                <li><label for="Announcement">New Announcement&nbsp;</label><input id="Announcement">
+                <button id="home-announcement-add" type="button" onclick="addAnnouncement()">Add</button></li><br>
+                <li>My Announcements <br></li> <br>
+                <!---<li>Schedule <input name="editSchedule" type="button" value="Edit"></li>--->
+
+            </ul>
+
+
+        </div>
+        <br>
+
+    </form>
+
+    <ul id="display-announcements" >
+
+    </ul>
+</body>
+
+</html>

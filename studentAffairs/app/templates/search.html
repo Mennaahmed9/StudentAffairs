@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
+
+    <title>Search page</title>
+</head>
+
+<header>
+    <nav>
+        <ul class="left">
+
+            <li><img src="imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
+            <li><a href="../home">Home</a></li>
+            <li><a href="profile">Profile</a></li>
+            <li><a href="student_screen">Student Screen</a></li>
+        </ul>
+        <ul class="right">
+            <li><a href="signin">Sign out</a></li>
+            <li><a href="help">Help?</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <div class="center">
+        <form action=>
+            <input id="search" type="search" placeholder="student name">
+        </form>
+    </div>
+
+    <table>
+        <tr>
+            <th> id </th>
+            <th> Name </th>
+            <th> GPA </th>
+            <th> Level </th>
+            <th> status</th>
+            <th> Department</th>
+            <th> Department Assignment </th>
+            <th> Edit </th>
+            <th> Delete </th>
+            <tbody id="searchBody">
+            
+            </tbody>
+
+        </tr>
+    <script type="text/javascript" src="script.js" defer></script>
+    </table>
+</body>
