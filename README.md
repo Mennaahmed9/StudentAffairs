@@ -5,7 +5,7 @@
 To run this project locally, follow these steps:
 
 1. Clone the repository:
-```git clone <repository_url>```
+```git clone https://github.com/Mennaahmed9/StudentAffairs.git```
 
 2. Navigate to the project directory: 
 ```cd project_directory```
