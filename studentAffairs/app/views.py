@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.urls import reverse
+
+from .models import Student
+
 
 def app(request):
   template = loader.get_template('index.html')
@@ -49,3 +53,17 @@ def signin(request):
   template = loader.get_template('signin.html')
   return HttpResponse(template.render())
 
+
+def fAddStudent(request):
+
+  name = request.post.get('student-name')
+  id = request.post.get('student-id')
+  email = request.post.get('email')
+  phone = request.post.get('phone')
+  # name = request.post.get('name')
+  # name = request.post.get('name')
+
+  toSave = Student(name = name, id = id ,email =email, phone = phone)
+  toSave.save()
+
+  return HttpResponseRedirect(reverse('home/student_screen'))

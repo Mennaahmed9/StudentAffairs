@@ -15,6 +15,7 @@ urlpatterns = [
     path('home/student_screen/edit_student', views.editStudent, name='editpage'),
     path('home/student_screen/search/department_assignment', views.departmentAssignment, name='departmentpage'),
     path('home/profile/edit_admin', views.editAdmin, name='editAdminpage'),
+    path('home/student_screen', views.fAddStudent, name='')
     
 
 ]
