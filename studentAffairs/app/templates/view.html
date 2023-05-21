@@ -1,33 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>View Students</title>
-    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
-</head>
+    <link rel="stylesheet" href="{% static 'styleSheet.css' %}" />
+  </head>
 
-
-<header>
+  <header>
     <nav>
-        <ul class="left">
-
-            <li><img src="../../static/imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
-            <li><a href="../">Home</a></li>
-            <li><a href="../profile">Profile</a></li>
-            <li><a href="../student_screen">Student Screen</a></li>
-        </ul>
-        <ul class="right">
-            <li><a href="../../signin">Sign out</a></li>
-            <li><a href="../help">Help?</a></li>
-        </ul>
+      <ul class="left">
+        <li>
+          <img
+            src="../../static/imgs/logo.png"
+            alt=""
+            width="20px"
+            height="20px"
+            title="logo"
+          />
+        </li>
+        <li><a href="../">Home</a></li>
+        <li><a href="../profile">Profile</a></li>
+        <li><a href="../student_screen">Student Screen</a></li>
+      </ul>
+      <ul class="right">
+        <li><a href="../../signin">Sign out</a></li>
+        <li><a href="../help">Help?</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-<body>
+  <body>
     <h3>View Students Records</h3>
 
-    <div>
+    <!-- <div>
         <label for="department-filter">Filter by department</label>
         <select id="department-filter">
             <option value="All">All</option>
@@ -36,23 +41,40 @@
             <option value="IS">IS</option>
             <option value="AI">AI</option>
         </select>
-    </div><br>
+    </div> -->
+    <br />
 
     <div>
-        <table id="table-records">
-            <tr>
-                <th><b>ID</b></th>
-                <th><b>Name</b></th>
-                <th><b>GPA</b></th>
-                <th><b>Gender</b></th>
-                <th><b>Level</b></th>
-                <th><b>Department</b></th>
-                <th><b>Status</b></th>
-                <th><b>Edit</b></th>
-            </tr>
-            <tbody id ="tbody">
-            </tbody>
-        </table>
+      <table id="table-records">
+        <tr>
+          <th><b>ID</b></th>
+          <th><b>Name</b></th>
+          <th><b>GPA</b></th>
+          <th><b>Gender</b></th>
+          <th><b>Level</b></th>
+          <th><b>Department</b></th>
+          <th><b>Status</b></th>
+          <th><b>Edit</b></th>
+        </tr>
+        <tbody id="tbody">
+          {% for student in students %}
+          <tr>
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.gpa}}</td>
+            <td>{{ student.get_gender_display }}</td>
+            <td>{{ student.get_level_display }}</td>
+            <td>{{ student.get_department_display }}</td>
+            <td>{{ student.get_status_display }}</td>
+            <td>
+              <a href="edit_student/{{student.id}}"
+                ><button name="edit" type="">Edit</button></a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-
-</body>
+  </body>
+</html>

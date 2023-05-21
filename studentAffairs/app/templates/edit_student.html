@@ -23,12 +23,12 @@
             title="logo"
           />
         </li>
-        <li><a href="../">Home</a></li>
-        <li><a href="../profile">Profile</a></li>
-        <li><a href="../student_screen">Student Screen</a></li>
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../profile">Profile</a></li>
+        <li><a href="../../student_screen">Student Screen</a></li>
       </ul>
       <ul class="right">
-        <li><a href="../../signin">Sign out</a></li>
+        <li><a href="../../../signin">Sign out</a></li>
         <li><a href="../help">Help?</a></li>
       </ul>
     </nav>
@@ -44,6 +44,7 @@
           type="text"
           id="edit-name"
           placeholder="Enter student's full name"
+          value="{{student.name}}"
         />
       </div>
       <div class="input-field">
@@ -52,6 +53,7 @@
           type="text"
           id="edit-id"
           placeholder="Enter student's ID"
+          value="{{student.id}}"
           disabled
         />
       </div>
@@ -62,6 +64,7 @@
           type="email"
           id="edit-email"
           placeholder="Enter student's email"
+          value="{{student.email}}"
         />
       </div>
 
@@ -71,6 +74,7 @@
           type="tel"
           id="edit-phone"
           placeholder="Enter student's phone number"
+          value="{{student.phone}}"
         />
       </div>
 
@@ -78,37 +82,76 @@
         <label>Gender</label>
         <div class="radio-container">
           <label class="radio-button">
+            {%if student.gender == 'Male'%}
             <input
               type="radio"
               id="edit-male"
               name="edit-gender"
               value="male"
+              checked
+              disabled
             />
-            Male
+            {% else %}
+            <input
+              type="radio"
+              id="edit-male"
+              name="edit-gender"
+              value="male"
+              disabled
+            />
+            {% endif %} Male
           </label>
           <label class="radio-button">
+            {%if student.gender == 'Female'%}
             <input
               type="radio"
               id="edit-female"
               name="edit-gender"
               value="female"
+              checked
+              disabled
             />
-            Female
+            {% else %}
+            <input
+              type="radio"
+              id="edit-female"
+              name="edit-gender"
+              value="female"
+              disabled
+            />
+            {% endif %} Female
           </label>
         </div>
-        <!--  -->
       </div>
 
       <div class="input-field">
         <label>Status</label>
         <div class="radio-container">
           <label class="radio-button">
+            {%if student.status == 'Active'%}
+            <input
+              type="radio"
+              name="edit-status"
+              value="active"
+              checked
+              disabled
+            />
+            {%else%}
             <input type="radio" name="edit-status" value="active" disabled />
-            Active
+            {% endif %} Active
           </label>
           <label class="radio-button">
+            {%if student.status == 'Inactive'%}
+            <input
+              type="radio"
+              name="edit-status"
+              value="inactive"
+              checked
+              disabled
+            />
+            {% else %}
             <input type="radio" name="edit-status" value="inactive" disabled />
-            Inactive
+            {% endif %}Inactive
           </label>
         </div>
       </div>
@@ -116,11 +159,23 @@
       <div class="input-field">
         <label for="edit-level">Level</label>
         <select name="level" id="edit-level">
-          <option value="" selected disabled>Select Level</option>
+          {% if student.level == 1 %}
+          <option value="1" selected>First Level</option>
+          {%else%}
           <option value="1">First Level</option>
+          {% endif %} {% if student.level == 2 %}
+          <option value="2" selected>Second Level</option>
+          {% else %}
           <option value="2">Second Level</option>
+          {% endif %} {% if student.level == 3 %}
+          <option value="3" selected>Third Level</option>
+          {% else %}
           <option value="3">Third Level</option>
+          {% endif %} {% if student.level == 4 %}
+          <option value="4" selected>Forth Level</option>
+          {% else %}
           <option value="4">Forth Level</option>
+          {% endif %}
         </select>
       </div>
 
@@ -128,17 +183,28 @@
         <label for="edit-department">Department</label>
         <select name="Department" id="edit-department" disabled>
           <option value="" selected disabled>Select Department</option>
-          <option value="General">General</option>
-          <option value="CS">Computer Science</option>
-          <option value="AI">Artificial Intelligence</option>
-          <option value="IS">Information Science</option>
-          <option value="IT">Information Technology</option>
+          {% if student.department == 'General' %}
+          <option value="General" selected>General</option>
+          {% elif student.department == 'CS' %}
+          <option value="CS" selected>Computer Science</option>
+          {% elif student.department == 'AI' %}
+          <option value="AI" selected>Artificial Intelligence</option>
+          {% elif student.department == 'IS' %}
+          <option value="IS" selected>Information Science</option>
+          {% elif student.department == 'IT' %}
+          <option value="IT" selected>Information Technology</option>
+          {% endif %}
         </select>
       </div>
 
       <div class="input-field">
         <label for="edit-gpa">GPA</label>
-        <input type="text" id="edit-gpa" placeholder="Enter student's GPA" />
+        <input
+          type="text"
+          id="edit-gpa"
+          placeholder="Enter student's GPA"
+          value="{{student.gpa}}"
+        />
       </div>
 
       <div class="input-field">
@@ -147,41 +213,112 @@
           type="text"
           id="edit-national-id"
           placeholder="Enter student's National ID"
+          value="{{student.nationalid}}"
         />
       </div>
 
       <div class="input-field">
-        <label for="edit-nationality"> Nationality</label>
+        <label for="edit-nationality">Nationality</label>
         <select name="nationality" id="edit-nationality">
-          <option value="" selected disabled>Select Nationality</option>
+          {% if student.nationality == 'Algerian' %}
+          <option value="Algerian" selected>Algerian</option>
+          {% else %}
           <option value="Algerian">Algerian</option>
+          {% endif %} {% if student.nationality == 'Bahraini' %}
+          <option value="Bahraini" selected>Bahraini</option>
+          {% else %}
           <option value="Bahraini">Bahraini</option>
+          {% endif %} {% if student.nationality == 'Comorian' %}
+          <option value="Comorian" selected>Comorian</option>
+          {% else %}
           <option value="Comorian">Comorian</option>
+          {% endif %} {% if student.nationality == 'Djiboutian' %}
+          <option value="Djiboutian" selected>Djiboutian</option>
+          {% else %}
           <option value="Djiboutian">Djiboutian</option>
+          {% endif %} {% if student.nationality == 'Egyptian' %}
+          <option value="Egyptian" selected>Egyptian</option>
+          {% else %}
           <option value="Egyptian">Egyptian</option>
+          {% endif %} {% if student.nationality == 'Emirati' %}
+          <option value="Emirati" selected>Emirati</option>
+          {% else %}
           <option value="Emirati">Emirati</option>
+          {% endif %} {% if student.nationality == 'Iraqi' %}
+          <option value="Iraqi" selected>Iraqi</option>
+          {% else %}
           <option value="Iraqi">Iraqi</option>
+          {% endif %} {% if student.nationality == 'Jordanian' %}
+          <option value="Jordanian" selected>Jordanian</option>
+          {% else %}
           <option value="Jordanian">Jordanian</option>
+          {% endif %} {% if student.nationality == 'Kuwaiti' %}
+          <option value="Kuwaiti" selected>Kuwaiti</option>
+          {% else %}
           <option value="Kuwaiti">Kuwaiti</option>
+          {% endif %} {% if student.nationality == 'Lebanese' %}
+          <option value="Lebanese" selected>Lebanese</option>
+          {% else %}
           <option value="Lebanese">Lebanese</option>
+          {% endif %} {% if student.nationality == 'Libyan' %}
+          <option value="Libyan" selected>Libyan</option>
+          {% else %}
           <option value="Libyan">Libyan</option>
+          {% endif %} {% if student.nationality == 'Mauritanian' %}
+          <option value="Mauritanian" selected>Mauritanian</option>
+          {% else %}
           <option value="Mauritanian">Mauritanian</option>
+          {% endif %} {% if student.nationality == 'Moroccan' %}
+          <option value="Moroccan" selected>Moroccan</option>
+          {% else %}
           <option value="Moroccan">Moroccan</option>
+          {% endif %} {% if student.nationality == 'Omani' %}
+          <option value="Omani" selected>Omani</option>
+          {% else %}
           <option value="Omani">Omani</option>
+          {% endif %} {% if student.nationality == 'Palestinian' %}
+          <option value="Palestinian" selected>Palestinian</option>
+          {% else %}
           <option value="Palestinian">Palestinian</option>
+          {% endif %} {% if student.nationality == 'Qatari' %}
+          <option value="Qatari" selected>Qatari</option>
+          {% else %}
           <option value="Qatari">Qatari</option>
+          {% endif %} {% if student.nationality == 'Saudi Arabian' %}
+          <option value="Saudi Arabian" selected>Saudi Arabian</option>
+          {% else %}
           <option value="Saudi Arabian">Saudi Arabian</option>
+          {% endif %} {% if student.nationality == 'Somali' %}
+          <option value="Somali" selected>Somali</option>
+          {% else %}
           <option value="Somali">Somali</option>
+          {% endif %} {% if student.nationality == 'Sudanese' %}
+          <option value="Sudanese" selected>Sudanese</option>
+          {% else %}
           <option value="Sudanese">Sudanese</option>
+          {% endif %} {% if student.nationality == 'Syrian' %}
+          <option value="Syrian" selected>Syrian</option>
+          {% else %}
           <option value="Syrian">Syrian</option>
+          {% endif %} {% if student.nationality == 'Tunisian' %}
+          <option value="Tunisian" selected>Tunisian</option>
+          {% else %}
           <option value="Tunisian">Tunisian</option>
+          {% endif %} {% if student.nationality == 'Yemeni' %}
+          <option value="Yemeni" selected>Yemeni</option>
+          {% else %}
           <option value="Yemeni">Yemeni</option>
+          {% endif %}
         </select>
       </div>
 
       <div class="input-field">
         <label for="edit-date-of-birth">Date of birth</label>
-        <input type="date" id="edit-date-of-birth" />
+        <input
+          type="date"
+          id="edit-date-of-birth"
+          value="{{ student.birthdate }}"
+        />
       </div>
       <br /><br />
       <div id="edit-info-button">
