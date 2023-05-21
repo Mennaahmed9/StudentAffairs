@@ -1,8 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
+from django.shortcuts import render
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_protect
 
 from .models import Student
+
 
 
 def app(request):
@@ -55,15 +59,33 @@ def signin(request):
 
 
 def fAddStudent(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        student_id = request.POST['id']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        gender = request.POST['gender']
+        status = request.POST['status']
+        level = request.POST['level']
+        department = request.POST['department']
+        gpa = request.POST['gpa']
+        nationalid = request.POST['nationalid']
+        nationality = request.POST['nationality']
+        birthdate = request.POST['birthdate']
 
-  name = request.post.get('student-name')
-  id = request.post.get('student-id')
-  email = request.post.get('email')
-  phone = request.post.get('phone')
-  # name = request.post.get('name')
-  # name = request.post.get('name')
-
-  toSave = Student(name = name, id = id ,email =email, phone = phone)
-  toSave.save()
-
-  return HttpResponseRedirect(reverse('home/student_screen'))
+        student = Student(
+            name=name,
+            id=student_id,
+            email=email,
+            phone=phone,
+            gender=gender,
+            status=status,
+            level=level,
+            department=department,
+            gpa=gpa,
+            nationalid=nationalid,
+            nationality=nationality,
+            birthdate=birthdate
+        )
+        student.save()
+        return HttpResponseRedirect(reverse('studentScreen'))
