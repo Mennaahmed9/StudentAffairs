@@ -46,7 +46,7 @@ class Student(models.Model):
         max_length=30, choices=DEPARTMENT, default=None)
     gpa = models.DecimalField(max_digits=3, decimal_places=2, default=None)
     nationalid = models.IntegerField(default=None)
-    nationality = models.CharField(max_length=50, choices=CHOICE)
+    nationality = models.CharField(max_length=50, choices=NATIONALITY)
     birthdate = models.DateTimeField(default=None)
 
 
