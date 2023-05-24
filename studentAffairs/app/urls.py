@@ -19,5 +19,4 @@ urlpatterns = [
     path('home/profile/edit_admin', views.editAdmin, name='editAdminpage'),
     path('home/student_screen', views.fAddStudent, name='')
 
-
 ]

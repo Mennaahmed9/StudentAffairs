@@ -25,32 +25,42 @@
 </header>
 
 <body>
-    <form id="editProfile-admin" action="../profile">
+    <form id="editProfile-admin" action="../profile" method="post">
+        {% csrf_token %}
         <h3>Edit the profile information</h3>
 
         <label for="name"> Name</label><br>
-        <input type="text" id="name" disabled>
+        <input type="text" id="name" value="{{admin.name}}" name="name">
 
         <br>
         <label for="E-mail"> Email</label><br>
-        <input type="email" id="E-mail" >
+        <input type="email" id="E-mail" value={{admin.email}} name="email">
         <br>
 
         <label for="Phone Number"> Phone Number</label><br>
-        <input type="tel" id="PhoneNumber" pattern="01[0-2]{1}[0-9]{4}[0-9]{4}">
+        <input type="tel" id="PhoneNumber" pattern="01[0-2]{1}[0-9]{4}[0-9]{4}" value={{admin.phone}} name="phone">
         <br>
 
         
         <label for="gender">Gender</label>
-            <span id="editGender"><input type="radio" name="Gender" value="Male"   checked >
+            <span id="editGender">
+                {%if admin.gender == 'male'%}
+                <input type="radio" name="Gender" value='Male' checked >
                 <label>Male</label>
+                {% else %}
+                <input type="radio" name="Gender" value='male' disabled >
+                <label>Male</label>
+                {% endif %}
+
+                {%if admin.gender == 'female'%}
+                <input type="radio" name="Gender" value="Female" checked >
+                <label>Female</label>
+                {% else %}
                 <input type="radio" name="Gender" value="Female" disabled>
                 <label>Female</label>
+                {% endif %}
             </span>
-            
-    
-            
-       
+
         <input id="saveInfo" type="submit" class="submit" value="Save" >
 
 

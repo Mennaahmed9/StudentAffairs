@@ -1,11 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from datetime import date
-from app.models import Student
+from .models import Student
+from .models import Admin
 
 from .models import Student
 
@@ -52,8 +53,8 @@ def home(request):
 
 
 def profile(request):
-    template = loader.get_template('profile.html')
-    return HttpResponse(template.render())
+    admin = Admin.objects.first()
+    return render(request, 'profile.html', {'admin': admin})
 
 
 def studentScreen(request):
@@ -93,8 +94,23 @@ def departmentAssignment(request):
 
 
 def editAdmin(request):
-    template = loader.get_template('edit_admin.html')
-    return HttpResponse(template.render())
+    if request.method == 'POST':
+        admin = Admin.objects.first()
+        admin.name = request.POST.get('name', '')
+        admin.email = request.POST.get('email', '')
+        admin.phone = request.POST.get('phone', '')
+        admin.save()
+        return redirect('profilepage')
+
+    admin = Admin.objects.first()
+    return render(request, 'edit_admin.html', {'admin': admin})
+
+
+
+
+# def updateAdmin(request):
+#
+#     return render(request, '../../profile.html', {'admin': admin})
 
 
 def signin(request):

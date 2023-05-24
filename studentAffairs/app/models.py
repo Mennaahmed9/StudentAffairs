@@ -48,3 +48,13 @@ class Student(models.Model):
     nationalid = models.IntegerField(default=None)
     nationality = models.CharField(max_length=50, choices=CHOICE)
     birthdate = models.DateTimeField(default=None)
+
+
+class Admin(models.Model):
+    name = models.CharField(max_length=50, default="Harry James Potter")
+    email = models.CharField(max_length=100, default="potter@gmail.com")
+    phone = models.CharField(max_length=20, default="01234567890")
+    gender = models.CharField(max_length=10, default="male")
+    password = models.CharField(max_length=20, default="MUFFLIATO")
+
+
