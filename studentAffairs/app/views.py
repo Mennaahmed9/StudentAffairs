@@ -81,21 +81,44 @@ def departmentAssignment(request):
 
 
 def editAdmin(request):
-    if request.method == 'POST':
-        admin = Admin.objects.first()
-        admin.name = request.POST.get('name', '')
-        admin.email = request.POST.get('email', '')
-        admin.phone = request.POST.get('phone', '')
-        admin.save()
-        return redirect('profilepage')
-
     admin = Admin.objects.first()
     return render(request, 'edit_admin.html', {'admin': admin})
+
+
+@csrf_exempt
+def saveAdmin(request):
+    admin = Admin.objects.first()
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        admin.name = name
+        admin.email = email
+        admin.phone = phone
+        admin.save()
+        return HttpResponseRedirect(reverse('profilepage'))
+    else:
+        return HttpResponseRedirect(reverse('editAdminpage'))
 
 
 def signin(request):
     template = loader.get_template('signin.html')
     return HttpResponse(template.render())
+
+
+@csrf_exempt
+def authenticate(request):
+    try:
+        if request.method == 'POST':
+            admin = Admin.objects.first()
+            email = request.POST.get('email')
+            password = request.POST.get('pw')
+            if email == admin.email and password == admin.password:
+                return HttpResponseRedirect(reverse('homepage'))
+            else:
+                return HttpResponseRedirect(reverse('signinpage'))
+    except Exception as e:
+        return JsonResponse({'error': str(e)})
 
 
 @csrf_exempt
