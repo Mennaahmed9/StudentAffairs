@@ -106,13 +106,6 @@ def editAdmin(request):
     return render(request, 'edit_admin.html', {'admin': admin})
 
 
-
-
-# def updateAdmin(request):
-#
-#     return render(request, '../../profile.html', {'admin': admin})
-
-
 def signin(request):
     template = loader.get_template('signin.html')
     return HttpResponse(template.render())
