@@ -60,7 +60,36 @@ def editStudent(request, id):
         'student': Student.objects.get(id=id)}
     return render(request, 'edit_student.html', student)
 
+@csrf_exempt
+def updateStudentInfo(request, student_id):
+    if request.method == 'POST':
+        student = Student.objects.get(id=student_id)
+        payload = json.loads(request.body)
+        student.name = payload.get("name")
+        student.email = payload.get("email")
+        student.phone = payload.get("phone")
+        student.level = payload.get("level")
+        student.gpa = payload.get("gpa")
+        student.nationalid = payload.get("nationalid")
+        student.nationality = payload.get("nationality")
+        student.birthdate = payload.get("birthdate")
 
+        student.save()
+
+        return JsonResponse({'message': 'Status updated successfully'})
+    else:
+        return JsonResponse({'message': 'Invalid request method'})
+
+@csrf_exempt
+def deleteStudent(request, student_id):
+    try:
+        if request.method == 'DELETE':
+            student = Student.objects.get(id=student_id)
+            student.delete()
+            return JsonResponse({'message': 'Student deleted successfully.'})
+    except Student.DoesNotExist:
+        return JsonResponse({'error': 'Student not found.'})
+    
 def departmentAssignment(request):
     template = loader.get_template('department_assignment.html')
     return HttpResponse(template.render())
