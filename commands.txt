@@ -1,0 +1,73 @@
+    // to add student to database, write in terminal
+    //in directory:
+StudentAffairs\studentAffairs>
+    //write command of interactive console
+python manage.py shell
+    // then write in '>>>' the following:
+
+from datetime import datetime
+from django.utils import timezone
+from app.models import Student
+
+current_date = timezone.now().date()
+
+birthdate = datetime(current_date.year, current_date.month, current_date.day, tzinfo=timezone.utc)
+
+student = Student(
+    name='Shefa',
+    id=1,
+    email='email@example.com',
+    phone=1234567890,
+    gender='Female',
+    status='Active',
+    level=1,
+    department='IT',
+    gpa=3.5,
+    nationalid=12345,
+    nationality='USA',
+    birthdate=birthdate
+)
+
+student.save()
+__________________________________________________________________________________________________________
+// to add another student:
+
+birthdate = timezone.make_aware(datetime(date(1995, 5, 10).year, date(1995, 5, 10).month, date(1995, 5, 10).day), timezone.utc)
+
+student_john = Student(
+    name='John',
+    id=2,
+    email='john@example.com',
+    phone=9876543210,
+    gender='Male',
+    status='Inactive',
+    level=2,
+    department='CS',
+    gpa=3.2,
+    nationalid=54321,
+    nationality='UK',
+    birthdate=birthdate
+)
+
+student_john.save()
+__________________________________________________________________________________________________________
+    // to see those objects write:
+Student.objects.all().values()
+__________________________________________________________________________________________________________
+    // to add admin write:
+from app.models import Admin
+
+admin = Admin(
+    name='Harry James Potter',
+    email='potter@gmail.com',
+    phone='01234567890',
+    gender='male',
+    password='MUFFLIATO'
+)
+admin.save()
+__________________________________________________________________________________________________________
+
+
+
+
+

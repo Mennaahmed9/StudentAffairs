@@ -1,48 +1,18 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import RequestContext
 # from django.views.decorators.csrf import csrf_protect
 from datetime import date
-from app.models import Student
+from .models import Student
+from .models import Admin
 
 from .models import Student
 
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
-
-# students = [
-#     {
-#         'name': 'Shefa',
-#         'id': 1,
-#         'email': 'emil@example.com',
-#         'phone': 1234567890,
-#         'gender': 'Female',
-#         'status': 'Active',
-#         'level': 1,
-#         'department': 'IT',
-#         'gpa': 3.5,
-#         'nationalid': 12345,
-#         'nationality': 'USA',
-#         'birthdate': date.today()
-#     },
-#     {
-#         'name': 'John',
-#         'id': 2,
-#         'email': 'john@example.com',
-#         'phone': 9876543210,
-#         'gender': 'Male',
-#         'status': 'Inactive',
-#         'level': 2,
-#         'department': 'CS',
-#         'gpa': 3.2,
-#         'nationalid': 54321,
-#         'nationality': 'UK',
-#         'birthdate': date(1995, 5, 10)
-#     },
-# ]
 
 
 def app(request):
@@ -56,8 +26,8 @@ def home(request):
 
 
 def profile(request):
-    template = loader.get_template('profile.html')
-    return HttpResponse(template.render())
+    admin = Admin.objects.first()
+    return render(request, 'profile.html', {'admin': admin})
 
 
 def studentScreen(request):
@@ -97,8 +67,23 @@ def departmentAssignment(request):
 
 
 def editAdmin(request):
-    template = loader.get_template('edit_admin.html')
-    return HttpResponse(template.render())
+    if request.method == 'POST':
+        admin = Admin.objects.first()
+        admin.name = request.POST.get('name', '')
+        admin.email = request.POST.get('email', '')
+        admin.phone = request.POST.get('phone', '')
+        admin.save()
+        return redirect('profilepage')
+
+    admin = Admin.objects.first()
+    return render(request, 'edit_admin.html', {'admin': admin})
+
+
+
+
+# def updateAdmin(request):
+#
+#     return render(request, '../../profile.html', {'admin': admin})
 
 
 def signin(request):
