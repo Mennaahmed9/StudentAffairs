@@ -49,7 +49,20 @@ def view(request):
     students = Student.objects.all()
     return render(request, 'view.html', {'students': students})
 
+@csrf_exempt
+def updateStudentStatus(request, student_id):
+    if request.method == 'POST':
+        student = Student.objects.get(id=student_id)
+        payload = json.loads(request.body)
+        new_status = payload.get('status')
 
+        student.status = new_status
+        student.save()
+
+        return JsonResponse({'message': 'Status updated successfully'})
+    else:
+        return JsonResponse({'message': 'Invalid request method'})
+    
 def addStudent(request):
     template = loader.get_template('add_student.html')
     return HttpResponse(template.render())
