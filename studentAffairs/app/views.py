@@ -3,43 +3,16 @@ from django.template import loader
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from django.views.decorators.csrf import csrf_protect
+# from django.views.decorators.csrf import csrf_protect
 from datetime import date
 from .models import Student
 from .models import Admin
 
 from .models import Student
 
-students = [
-    {
-        'name': 'Shefa',
-        'id': 1,
-        'email': 'emil@example.com',
-        'phone': 1234567890,
-        'gender': 'Female',
-        'status': 'Active',
-        'level': 1,
-        'department': 'IT',
-        'gpa': 3.5,
-        'nationalid': 12345,
-        'nationality': 'USA',
-        'birthdate': date.today()
-    },
-    {
-        'name': 'John',
-        'id': 2,
-        'email': 'john@example.com',
-        'phone': 9876543210,
-        'gender': 'Male',
-        'status': 'Inactive',
-        'level': 2,
-        'department': 'CS',
-        'gpa': 3.2,
-        'nationalid': 54321,
-        'nationality': 'UK',
-        'birthdate': date(1995, 5, 10)
-    },
-]
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.http import JsonResponse
 
 
 def app(request):
@@ -111,34 +84,38 @@ def signin(request):
     return HttpResponse(template.render())
 
 
+@csrf_exempt
 def fAddStudent(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        student_id = request.POST['id']
-        email = request.POST['email']
-        phone = request.POST['phone']
-        gender = request.POST['gender']
-        status = request.POST['status']
-        level = request.POST['level']
-        department = request.POST['department']
-        gpa = request.POST['gpa']
-        nationalid = request.POST['nationalid']
-        nationality = request.POST['nationality']
-        birthdate = request.POST['birthdate']
-
-        student = Student(
-            name=name,
-            id=student_id,
-            email=email,
-            phone=phone,
-            gender=gender,
-            status=status,
-            level=level,
-            department=department,
-            gpa=gpa,
-            nationalid=nationalid,
-            nationality=nationality,
-            birthdate=birthdate
-        )
-        student.save()
-        return HttpResponseRedirect(reverse('studentScreen'))
+    try:
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            student_id = request.POST.get('id')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            gender = request.POST.get('gender')
+            status = request.POST.get('status')
+            level = request.POST.get('level')
+            department = request.POST.get('department')
+            gpa = request.POST.get('gpa')
+            nationalid = request.POST.get('nationalid')
+            nationality = request.POST.get('nationality')
+            birthdate = request.POST.get('birthdate')
+            student = Student(
+                name=name,
+                id=student_id,
+                email=email,
+                phone=phone,
+                gender=gender,
+                status=status,
+                level=level,
+                department=department,
+                gpa=gpa,
+                nationalid=nationalid,
+                nationality=nationality,
+                birthdate=birthdate
+            )
+            print(student)
+            student.save()
+            return HttpResponseRedirect(reverse('viewpage'))
+    except Exception as e:
+        return JsonResponse({'error': str(e)})

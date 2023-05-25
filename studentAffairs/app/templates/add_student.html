@@ -36,8 +36,8 @@
   </header>
 
   <body>
-    <form id="student-form" action="/fAddStudent" method="post">
-      {% csrf_token %}
+    <form id="student-form" action="add" method="post">
+      <!-- {% csrf_token %} -->
       <h3>Student Registration Form</h3>
 
       <div class="input-field">
@@ -122,7 +122,7 @@
 
       <div class="input-field">
         <label for="department">Department</label>
-        <select name="Department" id="department">
+        <select name="department" id="department">
           <option value="" selected disabled>Select Department</option>
           <option value="General">General</option>
           <option value="CS">Computer Science</option>
@@ -132,7 +132,7 @@
         </select>
         <small class="error"></small>
       </div>
-<div class="input-field">
+      <div class="input-field">
         <label for="gpa">GPA</label>
         <input
           type="text"
@@ -190,7 +190,7 @@
         <small class="error"></small>
       </div>
 
-<button type="submit">Register</button>
+      <button type="submit">Register</button>
     </form>
   </body>
 </html>
