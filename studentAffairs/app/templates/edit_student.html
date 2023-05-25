@@ -32,10 +32,62 @@
         <li><a href="../help">Help?</a></li>
       </ul>
     </nav>
+     <script>
+      function editStudent() {
+        // Get form data and id
+        const studentId = document.getElementById("id").value;
+
+        const form = document.getElementById("edit-form");
+        const formData = new FormData(form);
+
+        // Create an empty object to store the form data
+        const payload = {};
+
+        // Populate the form data object with key-value pairs
+        for (let entry of formData.entries()) {
+          payload[entry[0]] = entry[1];
+        }
+
+        // Send the AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/update_student_info/" + studentId + "/");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            console.log(response.message);
+            alert(response.message);
+          } else {
+            console.error("Error:", xhr.status);
+          }
+        };
+
+        xhr.send(JSON.stringify(payload));
+      }
+
+      function deleteStudent() {
+        const studentId = document.getElementById("id").value;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "/delete_student/" + studentId + "/");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            alert(response.message);
+          } else {
+            alert("Delete student failed!");
+            console.error("Error:", xhr.status);
+          }
+        };
+
+        xhr.send();
+      }
+    </script>
   </header>
 
   <body>
-    <form id="edit-form" action="../view-page.html">
+    <form id="edit-form">
       <h3>Edit Page</h3>
 
       <div class="input-field">
@@ -317,7 +369,7 @@
         <input
           type="date"
           id="edit-date-of-birth"
-          value="{{ student.birthdate }}"
+          value="{{ student.birthdate|date:'Y-m-d' }}"
         />
       </div>
       <br /><br />
