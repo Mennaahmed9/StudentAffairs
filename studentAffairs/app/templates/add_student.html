@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="{% static 'styleSheet.css' %}" />
-    <!-- <script type="text/javascript" src="script.js" defer></script> -->
+    <script type="text/javascript" src="{% static 'addstudent.js' %}" defer></script>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -35,8 +35,8 @@
     </nav>
   </header>
 
-  <body>
-    <form id="student-form" action="add" method="post">
+  <body onload="hideDepartmentOptions();">
+    <form id="student-form" action="add" method="post" >
       <!-- {% csrf_token %} -->
       <h3>Student Registration Form</h3>
 
@@ -52,7 +52,7 @@
       </div>
       <div class="input-field">
         <label for="student-id">Student ID</label>
-        <input type="text" id="id" name="id" placeholder="Enter student's ID" />
+        <input type="text" id="student-id" name="id" placeholder="Enter student's ID" />
         <small class="error"></small>
       </div>
 
