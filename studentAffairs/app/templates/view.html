@@ -96,7 +96,22 @@
             <td>{{ student.get_gender_display }}</td>
             <td>{{ student.get_level_display }}</td>
             <td>{{ student.get_department_display }}</td>
-            <td>{{ student.get_status_display }}</td>
+           <td>
+              <select
+                id="status-dropdown-{{ student.id }}"
+                onchange="updateStatus('{{ student.id }}')"
+              >
+                {% if student.get_status_display == 'Active' %}
+                <option value="Active" selected>Active</option>
+                {%else%}
+                <option value="Active">Active</option>
+                {% endif %} {% if student.get_status_display == 'Inactive' %}
+                <option value="Inactive" selected>Inactive</option>
+                {%else%}
+                <option value="Inactive">Inactive</option>
+                {% endif %}
+              </select>
+            </td>
             <td>
               <a href="edit_student/{{student.id}}"
                 ><button name="edit" type="">Edit</button></a
