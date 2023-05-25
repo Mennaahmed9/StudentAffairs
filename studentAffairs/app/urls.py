@@ -18,5 +18,7 @@ urlpatterns = [
     path('home/student_screen/search/department_assignment',
          views.departmentAssignment, name='departmentpage'),
     path('home/profile/edit_admin', views.editAdmin, name='editAdminpage'),
+    path('update_student_status/<int:student_id>/', views.updateStudentStatus, name='updateStudentStatus'),
+
 
 ]
