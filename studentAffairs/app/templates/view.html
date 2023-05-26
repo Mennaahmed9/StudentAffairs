@@ -27,6 +27,35 @@
         <li><a href="../help">Help?</a></li>
       </ul>
     </nav>
+      <script type="text/javascript">
+      function updateStatus(studentId) {
+        const statusDropdown = document.getElementById(
+          "status-dropdown-" + studentId
+        );
+        const newStatus = statusDropdown.value;
+
+        const payload = {
+          status: newStatus,
+        };
+
+        // Send the AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/update_student_status/" + studentId + "/");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            // Handle the success response
+            console.log(response.message);
+          } else {
+            // Handle the error response
+            console.error("Error:", xhr.status);
+          }
+        };
+
+        xhr.send(JSON.stringify(payload));
+      }
+    </script>
   </header>
 
   <body>
