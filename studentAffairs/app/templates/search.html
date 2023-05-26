@@ -25,20 +25,21 @@
     <script>
       function search_operation() {
         const name = document.getElementById("search" );
-        // Send the AJAX request
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/" + name + "/");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            // Handle the success response
-            console.log(response.message);
-          } else {
-            // Handle the error response
-            console.error("Error:", xhr.status);
-          }
-        };
+        window.location = "../"+name+"/";
+        // // Send the AJAX request
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("POST", "/" + name + "/");
+        // xhr.setRequestHeader("Content-Type", "application/json");
+        // xhr.onload = function () {
+        //   if (xhr.status === 200) {
+        //     const response = JSON.parse(xhr.responseText);
+        //     // Handle the success response
+        //     console.log(response.message);
+        //   } else {
+        //     // Handle the error response
+        //     console.error("Error:", xhr.status);
+        //   }
+        // };
       }
     </script>
 </header>

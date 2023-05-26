@@ -40,9 +40,13 @@ def help(request):
     return HttpResponse(template.render())
 
 
-def search(request):
-    template = loader.get_template('search.html')
-    return HttpResponse(template.render())
+def search(request, search_name):
+    if search_name == 'all':
+        students = Student.objects.filter(status='Active')
+        return render(request, 'search.html', {'students': students})
+    else:
+        students = Student.objects.filter(name=search_name, status='Active').values()
+        return render(request, 'search.html', {'students': students})
 
 
 def view(request):
