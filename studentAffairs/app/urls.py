@@ -19,3 +19,5 @@ urlpatterns = [
          views.departmentAssignment, name='departmentpage'),
     path('home/profile/edit_admin', views.editAdmin, name='editAdminpage'),
 ]
+
+# path('home/student_screen/search<strint:search_name>', views.searching, name='searchpage'),

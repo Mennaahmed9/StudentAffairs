@@ -22,6 +22,47 @@
             <li><a href="../help">Help?</a></li>
         </ul>
     </nav>
+    <script>
+                // function showResult(str) {
+        //   if (str.length==0) {
+        //     document.getElementById("searchBody").innerHTML="";
+        //     document.getElementById("searchBody").style.border="0px";
+        //     return;
+        //   }
+        //   var xmlhttp=new XMLHttpRequest();
+        //   xmlhttp.onreadystatechange=function() {
+        //     if (this.readyState==4 && this.status==200) {
+        //       document.getElementById("searchBody").innerHTML=this.responseText;
+        //       document.getElementById("searchBody").style.border="1px solid #A5ACB2";
+        //     }
+        //   }
+        //   xmlhttp.open("GET","livesearch.php?q="+str,true);
+        //   xmlhttp.send();
+        // }
+
+        // function updateStatus(studentId) {
+        //     const statusDropdown = document.getElementById("status-dropdown-" + studentId);
+        //     const newStatus = statusDropdown.value;
+        //     const payload = {
+        //       status: newStatus,
+        //     };
+        //     // Send the AJAX request
+        //     const xhr = new XMLHttpRequest();
+        //     xhr.open("POST", "/update_student_status/" + studentId + "/");
+        //     xhr.setRequestHeader("Content-Type", "application/json");
+        //     xhr.onload = function () {
+        //       if (xhr.status === 200) {
+        //         const response = JSON.parse(xhr.responseText);
+        //         // Handle the success response
+        //         console.log(response.message);
+        //       } else {
+        //         // Handle the error response
+        //         console.error("Error:", xhr.status);
+        //       }
+        //     };
+        //     xhr.send(JSON.stringify(payload));
+        // }
+    </script>
 </header>
 
 <body>
@@ -43,7 +84,34 @@
             <th> Edit </th>
             <th> Delete </th>
             <tbody id="searchBody">
-            
+            {% for student in students %}
+          <tr>
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.gpa}}</td>
+            <td>{{ student.get_gender_display }}</td>
+            <td>{{ student.get_level_display }}</td>
+            <td>{{ student.get_department_display }}</td>
+           <td>
+              <select id="status-dropdown-{{ student.id }}" onchange="updateStatus('{{ student.id }}')">
+                {% if student.get_status_display == 'Active' %}
+                <option value="Active" selected>Active</option>
+                {%else%}
+                <option value="Active">Active</option>
+                {% endif %}
+              </select>
+            </td>
+            <td>
+              <a href="Department_Assignment_student/{{student.id}}"><button name="edit" type="">Department Assignment</button></a>
+            </td>
+            <td>
+              <a href="edit_student/{{student.id}}"><button name="edit" type="">Edit</button></a>
+            </td>
+          </tr>
+          {% endfor %}
+            </tbody>
+
+        </tr>
             </tbody>
 
         </tr>
