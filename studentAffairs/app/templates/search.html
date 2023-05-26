@@ -23,52 +23,30 @@
         </ul>
     </nav>
     <script>
-                // function showResult(str) {
-        //   if (str.length==0) {
-        //     document.getElementById("searchBody").innerHTML="";
-        //     document.getElementById("searchBody").style.border="0px";
-        //     return;
-        //   }
-        //   var xmlhttp=new XMLHttpRequest();
-        //   xmlhttp.onreadystatechange=function() {
-        //     if (this.readyState==4 && this.status==200) {
-        //       document.getElementById("searchBody").innerHTML=this.responseText;
-        //       document.getElementById("searchBody").style.border="1px solid #A5ACB2";
-        //     }
-        //   }
-        //   xmlhttp.open("GET","livesearch.php?q="+str,true);
-        //   xmlhttp.send();
-        // }
-
-        // function updateStatus(studentId) {
-        //     const statusDropdown = document.getElementById("status-dropdown-" + studentId);
-        //     const newStatus = statusDropdown.value;
-        //     const payload = {
-        //       status: newStatus,
-        //     };
-        //     // Send the AJAX request
-        //     const xhr = new XMLHttpRequest();
-        //     xhr.open("POST", "/update_student_status/" + studentId + "/");
-        //     xhr.setRequestHeader("Content-Type", "application/json");
-        //     xhr.onload = function () {
-        //       if (xhr.status === 200) {
-        //         const response = JSON.parse(xhr.responseText);
-        //         // Handle the success response
-        //         console.log(response.message);
-        //       } else {
-        //         // Handle the error response
-        //         console.error("Error:", xhr.status);
-        //       }
-        //     };
-        //     xhr.send(JSON.stringify(payload));
-        // }
+      function search_operation() {
+        const name = document.getElementById("search" );
+        // Send the AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/" + name + "/");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            // Handle the success response
+            console.log(response.message);
+          } else {
+            // Handle the error response
+            console.error("Error:", xhr.status);
+          }
+        };
+      }
     </script>
 </header>
 
 <body>
     <div class="center">
-        <form action=>
-            <input id="search" type="search" placeholder="student name">
+        <form>
+            <input id="search" type="search" placeholder="student name" ><button onclick="search_operation()"></button>
         </form>
     </div>
 

@@ -161,3 +161,11 @@ def fAddStudent(request):
             return HttpResponseRedirect(reverse('viewpage'))
     except Exception as e:
         return JsonResponse({'error': str(e)})
+
+# def searching(request, search_name):
+#         mydata = Student.objects.filter(name=search_name, status='Active').values()
+#         template = loader.get_template('search.html')
+#         context = {
+#             'Student': mydata,
+#         }
+#         return HttpResponse(template.render(context, request))

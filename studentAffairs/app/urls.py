@@ -9,6 +9,7 @@ urlpatterns = [
     path('home/student_screen', views.studentScreen, name='studentScreen'),
     path('home/help', views.help, name='helppage'),
     path('home/student_screen/search', views.search, name='searchpage'),
+    # path('home/student_screen/search<strint:search_name>', views.searching, name='searchpage'),
     path('home/student_screen/add', views.fAddStudent, name=''),
     path('home/student_screen/view', views.view, name='viewpage'),
     path('home/student_screen/add_student',
@@ -22,5 +23,3 @@ urlpatterns = [
     path('update_student_info/<int:student_id>/', views.updateStudentInfo, name='updateStudentInfo'),
     path('delete_student/<int:student_id>/', views.deleteStudent, name='deleteStudent'),
 ]
-
-# path('home/student_screen/search<strint:search_name>', views.searching, name='searchpage'),
