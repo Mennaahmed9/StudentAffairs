@@ -25,7 +25,7 @@
     <script>
       function search_operation() {
         const name = document.getElementById("search" );
-        window.location = "../"+name+"/";
+        window.location = "../"+name+"";
         // // Send the AJAX request
         // const xhr = new XMLHttpRequest();
         // xhr.open("POST", "/" + name + "/");
@@ -63,7 +63,7 @@
             <th> Edit </th>
             <th> Delete </th>
             <tbody id="searchBody">
-            {% for student in students %}
+            {% for student in Students %}
           <tr>
             <td>{{student.id}}</td>
             <td>{{student.name}}</td>
