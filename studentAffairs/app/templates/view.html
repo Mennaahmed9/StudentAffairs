@@ -9,34 +9,34 @@
   <header>
     <nav>
       <script type="text/javascript">
-      function updateStatus(studentId) {
-        const statusDropdown = document.getElementById(
-          "status-dropdown-" + studentId
-        );
-        const newStatus = statusDropdown.value;
+        function updateStatus(studentId) {
+          const statusDropdown = document.getElementById(
+            "status-dropdown-" + studentId
+          );
+          const newStatus = statusDropdown.value;
 
-        const payload = {
-          status: newStatus,
-        };
+          const payload = {
+            status: newStatus,
+          };
 
-        // Send the AJAX request
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/update_student_status/" + studentId + "/");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            // Handle the success response
-            console.log(response.message);
-          } else {
-            // Handle the error response
-            console.error("Error:", xhr.status);
-          }
-        };
+          // Send the AJAX request
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "/update_student_status/" + studentId + "/");
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              const response = JSON.parse(xhr.responseText);
+              // Handle the success response
+              console.log(response.message);
+            } else {
+              // Handle the error response
+              console.error("Error:", xhr.status);
+            }
+          };
 
-        xhr.send(JSON.stringify(payload));
-      }
-    </script>
+          xhr.send(JSON.stringify(payload));
+        }
+      </script>
       <ul class="left">
         <li>
           <img
@@ -56,7 +56,7 @@
         <li><a href="../help">Help?</a></li>
       </ul>
     </nav>
-      <script type="text/javascript">
+    <script type="text/javascript">
       function updateStatus(studentId) {
         const statusDropdown = document.getElementById(
           "status-dropdown-" + studentId
@@ -123,7 +123,22 @@
             <td>{{ student.get_gender_display }}</td>
             <td>{{ student.get_level_display }}</td>
             <td>{{ student.get_department_display }}</td>
-            <td>{{ student.get_status_display }}</td>
+            <td>
+              <select
+                id="status-dropdown-{{ student.id }}"
+                onchange="updateStatus('{{ student.id }}')"
+              >
+                {% if student.get_status_display == 'Active' %}
+                <option value="Active" selected>Active</option>
+                {% else %}
+                <option value="Active">Active</option>
+                {% endif %} {% if student.get_status_display == 'Inactive' %}
+                <option value="Inactive" selected>Inactive</option>
+                {% else %}
+                <option value="Inactive">Inactive</option>
+                {% endif %}
+              </select>
+            </td>
             <td>
               <a href="edit_student/{{student.id}}"
                 ><button name="edit" type="">Edit</button></a
