@@ -433,3 +433,11 @@ select , select option {
             font-size: 16px;
             letter-spacing: 2px;
 }
+
+.error{
+    color: red;
+    position: absolute;
+    margin-top: 90px;
+    margin-right: 20%;
+}
+

@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
 </head>
+
 <header>
     <nav>
         <ul>
@@ -19,22 +20,29 @@
     </nav>
 </header>
 
-
 <body>
 
     <p class="center">WELCOME TO</p>
     <h1 class="center">
         HOGWARTS
     </h1>
-    <form action="authenticate" method="post">
+    <form action="{% url 'authenticate' %}" method="post">
+        {% csrf_token %}
         <div>
             <label for="mail"> Email Address&nbsp;</label><br>
             <input type="email" id="mail" placeholder="email address" required name="email">
+            {% if email_error %}
+            <div class="error">{{ email_error }}</div>
+            {% endif %}
         </div>
-
+        <br>
         <div>
             <label for="pass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password&nbsp;</label><br>
             <input type="password" id="pass" placeholder="password" required name="pw">
+            {% if password_error %}
+            <br>
+            <div class="error">{{ password_error }}</div>
+            {% endif %}
         </div>
         <br>
         <div>

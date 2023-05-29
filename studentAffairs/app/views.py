@@ -153,7 +153,21 @@ def authenticate(request):
             if email == admin.email and password == admin.password:
                 return HttpResponseRedirect(reverse('homepage'))
             else:
-                return HttpResponseRedirect(reverse('signinpage'))
+                if email != admin.email:
+                    email_error = "Invalid email address."
+                else:
+                    email_error = None
+
+                if password != admin.password:
+                    password_error = "Invalid password."
+                else:
+                    password_error = None
+
+                if email_error or password_error:
+                    return render(request, 'signin.html', {
+                        'email_error': email_error,
+                        'password_error': password_error
+                    })
     except Exception as e:
         return JsonResponse({'error': str(e)})
 
