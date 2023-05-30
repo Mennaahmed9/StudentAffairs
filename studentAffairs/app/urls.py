@@ -16,7 +16,7 @@ urlpatterns = [
          views.addStudent, name='addStudentpage'),
     path('home/student_screen/edit_student/<int:id>',
          views.editStudent, name='editpage'),
-    path('home/student_screen/search/department_assignment',
+    path('home/student_screen/search/department_assignment/<int:student_id>',
          views.departmentAssignment, name='departmentpage'),
     path('home/profile/edit_admin', views.editAdmin, name='editAdminpage'),
     path('home/profile/save_admin', views.saveAdmin, name=''),

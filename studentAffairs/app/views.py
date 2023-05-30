@@ -114,9 +114,9 @@ def deleteStudent(request, student_id):
         return JsonResponse({'error': 'Student not found.'})
 
 
-def departmentAssignment(request):
-    template = loader.get_template('department_assignment.html')
-    return HttpResponse(template.render())
+def departmentAssignment(request, student_id):
+    student = Student.objects.get(id=student_id)
+    return render(request, 'department_assignment.html', {'student': student})
 
 
 def editAdmin(request):
