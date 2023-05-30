@@ -42,10 +42,10 @@ def help(request):
 @csrf_exempt
 def search(request, search_name):
     if search_name == 'all':
-        students = Student.objects.filter(status='Active').values()
+        students = Student.objects.filter(status='active').values()
         return render(request, 'search.html', {'students': students})
     else:
-        students = Student.objects.filter(name__contains=search_name, status='Active').values()
+        students = Student.objects.filter(name__contains=search_name, status='active').values()
         return render(request, 'search.html', {'students': students})
 
 
