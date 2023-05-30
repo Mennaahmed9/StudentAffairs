@@ -98,7 +98,7 @@ def updateStudentInfo(request, student_id):
 
         student.save()
 
-        return JsonResponse({'message': 'Status updated successfully'})
+        return JsonResponse({'message': 'Student information updated successfully'})
     else:
         return JsonResponse({'message': 'Invalid request method'})
 

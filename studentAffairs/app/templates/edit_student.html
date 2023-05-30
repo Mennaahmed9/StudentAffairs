@@ -32,63 +32,16 @@
         <li><a href="../help">Help?</a></li>
       </ul>
     </nav>
-    <script>
-      function editStudent() {
-        // Get form data and id
-        const studentId = document.getElementById("id").value;
-
-        const form = document.getElementById("edit-form");
-        const formData = new FormData(form);
-
-        // Create an empty object to store the form data
-        const payload = {};
-
-        // Populate the form data object with key-value pairs
-        for (let entry of formData.entries()) {
-          payload[entry[0]] = entry[1];
-        }
-
-        // Send the AJAX request
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/update_student_info/" + studentId + "/");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            console.log(response.message);
-            alert(response.message);
-          } else {
-            console.error("Error:", xhr.status);
-          }
-        };
-
-        xhr.send(JSON.stringify(payload));
-      }
-
-      function deleteStudent() {
-        const studentId = document.getElementById("id").value;
-        console.log(studentId);
-        const xhr = new XMLHttpRequest();
-        xhr.open("DELETE", "/delete_student/" + studentId + "/");
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            alert(response.message);
-          } else {
-            alert("Delete student failed!");
-            console.error("Error:", xhr.status);
-          }
-        };
-
-        xhr.send();
-      }
-    </script>
+    <script
+      type="text/javascript"
+      src="{% static 'editstudent.js' %}"
+      defer
+    ></script>
   </header>
 
   <body>
     <div id="edit-form-container">
-      <form id="edit-form" action="../view-page.html">
+      <form id="edit-form">
         <h3>Edit Page</h3>
 
         <div class="input-field">
@@ -100,6 +53,7 @@
             placeholder="Enter student's full name"
             value="{{student.name}}"
           />
+          <small class="error"></small>
         </div>
         <div class="input-field">
           <label for="edit-id">Student ID</label>
@@ -122,17 +76,19 @@
             placeholder="Enter student's email"
             value="{{student.email}}"
           />
+          <small class="error"></small>
         </div>
 
         <div class="input-field">
           <label for="edit-phone">Phone</label>
           <input
-            type="tel"
+            type="text"
             id="edit-phone"
             name="phone"
             placeholder="Enter student's phone number"
             value="{{student.phone}}"
           />
+          <small class="error"></small>
         </div>
 
         <div class="input-field">
@@ -239,6 +195,7 @@
             <option value="4">Forth Level</option>
             {% endif %}
           </select>
+          <small class="error"></small>
         </div>
 
         <div class="input-field">
@@ -268,6 +225,7 @@
             placeholder="Enter student's GPA"
             value="{{student.gpa}}"
           />
+          <small class="error"></small>
         </div>
 
         <div class="input-field">
@@ -279,6 +237,7 @@
             placeholder="Enter student's National ID"
             value="{{student.nationalid}}"
           />
+          <small class="error"></small>
         </div>
 
         <div class="input-field">
@@ -374,6 +333,7 @@
             <option value="Yemeni">Yemeni</option>
             {% endif %}
           </select>
+          <small class="error"></small>
         </div>
 
         <div class="input-field">
@@ -384,10 +344,11 @@
             name="birthdate"
             value="{{ student.birthdate|date:'Y-m-d' }}"
           />
+          <small class="error"></small>
         </div>
         <br /><br />
         <div id="edit-info-button" style="gap: 1rem">
-          <button type="button" onclick="editStudent()">Save</button>
+          <button type="button" id="save-button">Save</button>
           <button type="button" onclick="deleteStudent()">Delete</button>
         </div>
       </form>
