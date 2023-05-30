@@ -39,13 +39,13 @@ def help(request):
     template = loader.get_template('help.html')
     return HttpResponse(template.render())
 
-
+@csrf_exempt
 def search(request, search_name):
     if search_name == 'all':
-        students = Student.objects.filter(status='Active')
+        students = Student.objects.filter(status='Active').values()
         return render(request, 'search.html', {'students': students})
     else:
-        students = Student.objects.filter(name=search_name, status='Active').values()
+        students = Student.objects.filter(name__contains=search_name, status='Active').values()
         return render(request, 'search.html', {'students': students})
 
 

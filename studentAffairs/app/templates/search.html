@@ -12,42 +12,38 @@
     <nav>
         <ul class="left">
 
-            <li><img src="../../static/imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
-            <li><a href="../">Home</a></li>
-            <li><a href="../profile">Profile</a></li>
-            <li><a href="../student_screen">Student Screen</a></li>
+            <li><img src="../../../static/imgs/logo.png" alt="" width="20px" height="20px" title="logo"></li>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../../profile">Profile</a></li>
+            <li><a href="../../student_screen">Student Screen</a></li>
         </ul>
         <ul class="right">
-            <li><a href="../../signin">Sign out</a></li>
-            <li><a href="../help">Help?</a></li>
+            <li><a href="../../../signin">Sign out</a></li>
+            <li><a href="../../help">Help?</a></li>
         </ul>
     </nav>
     <script>
+    function handle(e){
+        if(e.keyCode === 13){
+            e.preventDefault(); // Ensure it is only this code that runs
+            search_operation();
+        }
+    }
       function search_operation() {
-        const name = document.getElementById("search" );
-        window.location = "../"+name+"";
-        // // Send the AJAX request
-        // const xhr = new XMLHttpRequest();
-        // xhr.open("POST", "/" + name + "/");
-        // xhr.setRequestHeader("Content-Type", "application/json");
-        // xhr.onload = function () {
-        //   if (xhr.status === 200) {
-        //     const response = JSON.parse(xhr.responseText);
-        //     // Handle the success response
-        //     console.log(response.message);
-        //   } else {
-        //     // Handle the error response
-        //     console.error("Error:", xhr.status);
-        //   }
-        // };
+          const name = document.getElementById("search");
+          window.location = name.value;
       }
     </script>
 </header>
 
 <body>
     <div class="center">
-        <form>
-            <input id="search" type="search" placeholder="student name" ><button onclick="search_operation()"></button>
+        <form><div>
+            <input id="search" placeholder="student name" onkeypress="handle(event)">
+            <label>
+                <img src="../../../static/imgs/searchIcon.png" alt="" width="80px" height="70px" title="search icon" onclick="search_operation()">
+            </label>
+        </div>
         </form>
     </div>
 
@@ -56,35 +52,25 @@
             <th> id </th>
             <th> Name </th>
             <th> GPA </th>
+            <th> Gender </th>
             <th> Level </th>
-            <th> status</th>
             <th> Department</th>
             <th> Department Assignment </th>
             <th> Edit </th>
-            <th> Delete </th>
             <tbody id="searchBody">
-            {% for student in Students %}
+            {% for student in students %}
           <tr>
             <td>{{student.id}}</td>
             <td>{{student.name}}</td>
             <td>{{student.gpa}}</td>
-            <td>{{ student.get_gender_display }}</td>
-            <td>{{ student.get_level_display }}</td>
-            <td>{{ student.get_department_display }}</td>
-           <td>
-              <select id="status-dropdown-{{ student.id }}" onchange="updateStatus('{{ student.id }}')">
-                {% if student.get_status_display == 'Active' %}
-                <option value="Active" selected>Active</option>
-                {%else%}
-                <option value="Active">Active</option>
-                {% endif %}
-              </select>
+            <td>{{student.gender}}</td>
+            <td>{{student.level}}</td>
+            <td>{{student.department}}</td>
+            <td>
+              <a href="../Department_Assignment_student/{{student.id}}"><button name="edit" type="">Department Assignment</button></a>
             </td>
             <td>
-              <a href="Department_Assignment_student/{{student.id}}"><button name="edit" type="">Department Assignment</button></a>
-            </td>
-            <td>
-              <a href="edit_student/{{student.id}}"><button name="edit" type="">Edit</button></a>
+              <a href="../edit_student/{{student.id}}"><button name="edit" type="">Edit</button></a>
             </td>
           </tr>
           {% endfor %}
