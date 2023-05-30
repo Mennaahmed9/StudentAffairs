@@ -119,6 +119,16 @@ def departmentAssignment(request, student_id):
     return render(request, 'department_assignment.html', {'student': student})
 
 
+@csrf_exempt
+def saveDepartment(request, student_id):
+    if request.method == 'POST':
+        student = Student.objects.get(id=student_id)
+        dep = request.POST.get('deps')
+        student.department = dep
+        student.save()
+        return HttpResponseRedirect(reverse('searchpage', args=['all']))
+
+
 def editAdmin(request):
     admin = Admin.objects.first()
     return render(request, 'edit_admin.html', {'admin': admin})

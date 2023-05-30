@@ -41,7 +41,9 @@
         <form><div>
             <input id="search" placeholder="student name" onkeypress="handle(event)">
             <label>
-                <img src="../../../static/imgs/searchIcon.png" alt="" width="80px" height="70px" title="search icon" onclick="search_operation()">
+                <a href="#" onclick="search_operation()">
+                    <img src="../../../static/imgs/searchIcon.png" alt="" width="80px" height="70px" title="search icon">
+                </a>
             </label>
         </div>
         </form>
@@ -56,7 +58,7 @@
             <th> Level </th>
             <th> Department</th>
             <th> Department Assignment </th>
-            <th> Edit </th>
+            <th> Edit Student Information </th>
             <tbody id="searchBody">
             {% for student in students %}
           <tr>
@@ -67,7 +69,7 @@
             <td>{{student.level}}</td>
             <td>{{student.department}}</td>
             <td>
-              <a href="department_assignment/{{student.id}}"><button name="edit" type="">Department Assignment</button></a>
+              <a href="department_assignment/{{student.id}}"><button name="edit" type="">Assign</button></a>
             </td>
             <td>
               <a href="../edit_student/{{student.id}}"><button name="edit" type="">Edit</button></a>

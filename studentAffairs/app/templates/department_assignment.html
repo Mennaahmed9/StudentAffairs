@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="{% static 'styleSheet.css' %}">
+    <link rel="stylesheet" href="{% static 'styleSheet.css'  %}">
     <title>Department Assignment page</title>
 </head>
 
@@ -24,7 +24,7 @@
 </header>
 
 <body>
-    <h1>Department Assignment</h1>
+    <h1 class="center">Department Assignment</h1>
     <table>
         <tr>
             <th> Student Id </th>
@@ -45,22 +45,49 @@
     </table>
 
 
-    <h2>select The Department</h2>
+    <h2 class="center">Select Department</h2>
 
-    <form action="../all">
+    <form class="center" action="../save_department/{{student.id}}/" method="post">
+        {% csrf_token %}
         <label>department:</label>
         <select name="deps" id="deps">
+            {% if student.department == "General" %}
             <option selected="selected">
                 General
             </option>
-            <option value="IS"> IS</option>
-            <option value="CS"> CS </option>
-            <option value="IT"> IT</option>
-            <option value="AI"> AI</option>
-            <option value="DS"> DS</option>
+            {% else %}
+            <option> General </option>
+            {% endif %}
+            {% if student.level == 3 or student.level == 4 %}
+                {% if student.department == "IS"%}
+                    <option value="IS" selected> IS</option>
+                {% else %}
+                    <option value="IS" > IS</option>
+                {% endif %}
+                {% if student.department == "CS"%}
+                    <option value="CS" selected> CS</option>
+                {% else %}
+                    <option value="CS"> CS </option>
+                {% endif %}
+                {% if student.department == "IT"%}
+                    <option value="IT" selected> IS</option>
+                {% else %}
+                    <option value="IT"> IT</option>
+                {% endif %}
+                {% if student.department == "AI"%}
+                    <option value="AI" selected> IS</option>
+                {% else %}
+                    <option value="AI"> AI</option>
+                {% endif %}
+                {% if student.department == "DS"%}
+                    <option value="DS" selected> IS</option>
+                {% else %}
+                    <option value="DS"> DS</option>
+                {% endif %}
+            {% endif %}
         </select>
         <br><br>
-        <input type="submit" value="Submit" id="depSave" onclick="">
+        <input class="submit" type="submit" value="Submit" id="depSave" >
     </form>
 
 

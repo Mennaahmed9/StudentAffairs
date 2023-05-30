@@ -18,6 +18,7 @@ urlpatterns = [
          views.editStudent, name='editpage'),
     path('home/student_screen/search/department_assignment/<int:student_id>',
          views.departmentAssignment, name='departmentpage'),
+    path('home/student_screen/search/save_department/<int:student_id>/', views.saveDepartment, name='save_department'),
     path('home/profile/edit_admin', views.editAdmin, name='editAdminpage'),
     path('home/profile/save_admin', views.saveAdmin, name=''),
     path('update_student_status/<int:student_id>/', views.updateStudentStatus, name='updateStudentStatus'),
