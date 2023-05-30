@@ -7,7 +7,7 @@ from django.template import RequestContext
 from datetime import date
 from .models import Student
 from .models import Admin
-
+from django.db.models import Q
 from .models import Student
 
 from django.views.decorators.csrf import csrf_exempt
@@ -39,14 +39,16 @@ def help(request):
     template = loader.get_template('help.html')
     return HttpResponse(template.render())
 
+
 @csrf_exempt
 def search(request, search_name):
-    if search_name == 'all':
-        students = Student.objects.filter(status='active').values()
-        return render(request, 'search.html', {'students': students})
-    else:
-        students = Student.objects.filter(name__contains=search_name, status='active').values()
-        return render(request, 'search.html', {'students': students})
+    query = Q(status='active')
+    query.add(Q(status='Active'), Q.OR)
+    if search_name != 'all':
+        query.add(Q(name__contains=search_name), Q.AND)
+
+    students = Student.objects.filter(query).values()
+    return render(request, 'search.html', {'students': students})
 
 
 def view(request):
