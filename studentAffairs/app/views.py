@@ -41,10 +41,10 @@ def help(request):
 
 
 @csrf_exempt
-def search(request, search_name):
+def search(request, search_name=''):
     query = Q(status='active')
     query.add(Q(status='Active'), Q.OR)
-    if search_name != 'all':
+    if search_name != '':
         query.add(Q(name__contains=search_name), Q.AND)
 
     students = Student.objects.filter(query).values()
