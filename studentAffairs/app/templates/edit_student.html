@@ -42,7 +42,7 @@
   <body>
     <div id="edit-form-container">
       <form id="edit-form">
-        <h3>Edit Page</h3>
+        <h1 class="center">Edit Student</h1>
 
         <div class="input-field">
           <label for="student-name">Name</label>
@@ -174,6 +174,42 @@
           </div>
         </div>
 
+
+        <div class="input-field">
+          <label for="edit-gpa">GPA</label>
+          <input
+            type="text"
+            id="edit-gpa"
+            name="gpa"
+            placeholder="Enter student's GPA"
+            value="{{student.gpa}}"
+          />
+          <small class="error"></small>
+        </div>
+
+        <div class="input-field">
+          <label for="edit-national-id"> National ID</label>
+          <input
+            type="text"
+            id="edit-national-id"
+            name="nationalid"
+            placeholder="Enter student's National ID"
+            value="{{student.nationalid}}"
+          />
+          <small class="error"></small>
+        </div>
+
+        <div class="input-field">
+          <label for="edit-date-of-birth">Date of birth</label>
+          <input
+            type="date"
+            id="edit-date-of-birth"
+            name="birthdate"
+            value="{{ student.birthdate|date:'Y-m-d' }}"
+          />
+          <small class="error"></small>
+        </div>
+
         <div class="input-field">
           <label for="edit-level">Level</label>
           <select name="level" id="edit-level">
@@ -214,30 +250,6 @@
             <option value="IT" selected>Information Technology</option>
             {% endif %}
           </select>
-        </div>
-
-        <div class="input-field">
-          <label for="edit-gpa">GPA</label>
-          <input
-            type="text"
-            id="edit-gpa"
-            name="gpa"
-            placeholder="Enter student's GPA"
-            value="{{student.gpa}}"
-          />
-          <small class="error"></small>
-        </div>
-
-        <div class="input-field">
-          <label for="edit-national-id"> National ID</label>
-          <input
-            type="text"
-            id="edit-national-id"
-            name="nationalid"
-            placeholder="Enter student's National ID"
-            value="{{student.nationalid}}"
-          />
-          <small class="error"></small>
         </div>
 
         <div class="input-field">
@@ -336,18 +348,9 @@
           <small class="error"></small>
         </div>
 
-        <div class="input-field">
-          <label for="edit-date-of-birth">Date of birth</label>
-          <input
-            type="date"
-            id="edit-date-of-birth"
-            name="birthdate"
-            value="{{ student.birthdate|date:'Y-m-d' }}"
-          />
-          <small class="error"></small>
-        </div>
+
         <br /><br />
-        <div id="edit-info-button" style="gap: 1rem">
+        <div id="edit-info-button" style="gap: 1rem" class="center">
           <button type="button" id="save-button">Save</button>
           <button type="button" onclick="deleteStudent()">Delete</button>
         </div>

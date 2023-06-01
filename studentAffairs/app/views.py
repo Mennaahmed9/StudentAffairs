@@ -163,7 +163,7 @@ def authenticate(request):
             email = request.POST.get('email')
             password = request.POST.get('pw')
             if email == admin.email and password == admin.password:
-                return HttpResponseRedirect(reverse('homepage'))
+                return HttpResponseRedirect(reverse('studentScreen'))
             else:
                 email_error = None
                 password_error = None

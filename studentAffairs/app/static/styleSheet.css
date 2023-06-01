@@ -288,15 +288,22 @@ input#search:focus{
 
 
 .input-field  > input {
-    width: 440px;
-    flex-basis: 60%;
+    width: 400px;
+    transition: 0.5s;
+}
+.input-field:hover input {
+    letter-spacing: 5px;
+    width: 450px;
 }
 
 .input-field  select{
-    width: 900px;
-    flex-basis: 70%;
+    letter-spacing: 5px;
+    width: 470px;
+    transition: 0.5s;
 }
-
+.input-field:hover  select{
+    width: 500px;
+}
 .radio-container {
     display: flex;
     flex-direction: row;
@@ -308,6 +315,7 @@ input#search:focus{
 .radio-button{
     margin-left:0px;
     padding: 10px;
+    display: contents;
 }
 
 .input-field  label {
@@ -316,6 +324,7 @@ input#search:focus{
     margin-bottom: 5px;
     font-size: 16px;
     flex-basis: 10%;
+    display: flex;
 }
 
 
@@ -393,10 +402,10 @@ input#search:focus{
 }
 
 #editProfile-admin > input{
-    width: 300px;
+    width: 60%;
 }
 #editProfile-admin > input:hover{
-    width: 300px;
+    width: 65%;
 }
 
 select , select option {

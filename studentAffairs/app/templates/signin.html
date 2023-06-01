@@ -26,7 +26,7 @@
     <h1 class="center">
         HOGWARTS
     </h1>
-    <form action="{% url 'authenticate' %}" method="post">
+    <form action="{% url 'authenticate' %}" method="post" class="center">
         {% csrf_token %}
         <div>
             <label for="mail"> Email Address&nbsp;</label><br>
