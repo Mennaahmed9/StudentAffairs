@@ -194,7 +194,7 @@ const validateStatus = (status) => {
 }
 
 const validateLevel = (level) => {
-  return (level.selectedIndex !== 0);
+  return (level.selectedIndex !== -1);
 }
 
 const validateDepartment = (department) => {
