@@ -198,6 +198,7 @@ button,
     transition: 0.5s;
     width: 150px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 button:hover,
