@@ -38,7 +38,7 @@ class Student(models.Model):
     name = models.CharField(max_length=50)
     id = models.IntegerField(primary_key=True)
     email = models.CharField(max_length=100)
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=12)
     gender = models.CharField(max_length=10, choices=CHOICE)
     status = models.CharField(max_length=10, choices=STATUS)
     level = models.IntegerField(choices=LEVEL)
