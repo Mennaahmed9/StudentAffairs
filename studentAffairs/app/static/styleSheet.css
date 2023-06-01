@@ -500,4 +500,49 @@ select option {
     color: red;
     position: absolute;
     margin-top: 90px;
+    margin-right: 20%;
+}
+
+.help_list {
+    background-color: rgba(29, 3, 35, 0.65);
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 15px;
+    font-size: x-large;
+    letter-spacing: 2px;
+
+}
+
+.help_list li {
+    border: 2px dot-dot-dash black;
+    border-radius: 12px;
+    display: block;
+    text-align: center;
+    padding: 16px 32px;
+}
+
+.help_list img{
+    width: 33%;
+    height: 33%;
+}
+.help_text {
+    background-color: rgba(29, 3, 35, 0.65);
+    border-radius: 15px;
+    padding: 16px 32px;
+    justify-content: space-around;
+
+}
+.help_div h3{
+    color: #e1bb01;
+}
+.help_div p{
+    letter-spacing: 4px;
+    font-size: x-large;
+}
+ hr{
+    border:2px solid rgba(29, 3, 35, 0.65);
 }
