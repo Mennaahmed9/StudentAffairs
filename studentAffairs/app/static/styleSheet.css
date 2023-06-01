@@ -523,9 +523,31 @@ select option {
     padding: 16px 32px;
 }
 
-.help_list img{
+.help_list img, .home_list img{
     width: 33%;
     height: 33%;
+}
+
+.home_list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    border-radius: 15px;
+    font-size: x-large;
+    letter-spacing: 2px;
+}
+
+.home_list li {
+    background-color: rgba(29, 3, 35, 0.65);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px dot-dot-dash black;
+    border-radius: 12px;
+    display: block;
+    text-align: center;
+    margin: 12px;
+    padding: 16px;
 }
 .help_text {
     background-color: rgba(29, 3, 35, 0.65);
