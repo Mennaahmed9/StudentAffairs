@@ -96,6 +96,9 @@ def updateStudentInfo(request, student_id):
         student.nationality = payload.get("nationality")
         student.birthdate = payload.get("birthdate")
 
+        if student.level <= "2":
+            student.department = "General"
+
         student.save()
 
         return JsonResponse({'message': 'Student information updated successfully'})
@@ -110,7 +113,7 @@ def deleteStudent(request, student_id):
             student = Student.objects.get(id=student_id)
             student.delete()
             return JsonResponse({'message': 'Student deleted successfully.'})
-    except Student.DoesNotExist:
+    except student.DoesNotExist:
         return JsonResponse({'error': 'Student not found.'})
 
 
@@ -126,7 +129,7 @@ def saveDepartment(request, student_id):
         dep = request.POST.get('deps')
         student.department = dep
         student.save()
-        return HttpResponseRedirect(reverse('searchpage', args=['all']))
+        return HttpResponseRedirect(reverse('searchpage'))
 
 
 def editAdmin(request):
@@ -215,16 +218,7 @@ def fAddStudent(request):
                 nationality=nationality,
                 birthdate=birthdate
             )
-            print(student)
             student.save()
             return HttpResponseRedirect(reverse('viewpage'))
     except Exception as e:
         return JsonResponse({'error': str(e)})
-
-# def searching(request, search_name):
-#         mydata = Student.objects.filter(name=search_name, status='Active').values()
-#         template = loader.get_template('search.html')
-#         context = {
-#             'Student': mydata,
-#         }
-#         return HttpResponse(template.render(context, request))
