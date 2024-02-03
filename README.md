@@ -21,10 +21,10 @@ The website boasts a well-crafted navigation bar, allowing users to effortlessly
 
 # Technologies Used
 The Student Affairs website is built using the following technologies:
-** Django **
-** HTML **
-** CSS ** 
-** JavaScript **
+* Django
+* HTML
+* CSS
+* JavaScript
 
 ## Getting Started
 
