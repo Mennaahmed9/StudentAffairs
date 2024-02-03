@@ -12,7 +12,7 @@ The system incorporates a delete button on the edit student data page, prompting
 Users can quickly search for active students by name, with the results presented in a user-friendly table format for easy reference.
 ## 5- Assign Department to a Student:
 After searching for a specific student, users can assign a department through the dedicated department assignment page. This feature is accessible only for students with a level of 3, with clear error messages for ineligible cases.
-# 6- View All Active/Inactive Students:
+## 6- View All Active/Inactive Students:
 Separate pages display tables containing information about all active or inactive students, showcasing relevant attributes for quick reference.
 ## 7- Change Student Status:
 Administrators can conveniently switch a student's status from active to inactive or vice versa directly from the table displaying all students.
